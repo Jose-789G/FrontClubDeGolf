@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{ titulo | uppercase }}</span>
+                    <form class="mt-5" [formGroup]="socioForm" (ngSubmit)="agregarSocio()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="id"
+                            class="form-control form-control-lg" placeholder="Introduzca el id del socio">
+                            <div class="text-danger" *ngIf="socioForm?.get('id')?.hasError('required') && socioForm.get('id')?.touched">
+                                <span>El id del socio <strong>es obligatorio</strong></span>
+                            </div>               
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="dni" 
+                            class="form-control form-control-lg" placeholder="Introduzca el Dni del socio">
+                            <div class="text-danger" *ngIf="socioForm?.get('dni')?.hasError('required') && socioForm.get('dni')?.touched">
+                                <span>El dni del socio <strong>es obligatorio</strong></span>
+                            </div>  
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre"
+                            class="form-control form-control-lg" placeholder="Introduzca el nombre del socio">
+                            <div class="text-danger" *ngIf="socioForm?.get('nombre')?.hasError('required') && socioForm.get('nombre')?.touched">
+                                <span>El nombre del socio <strong>es obligatorio</strong></span>
+                            </div> 
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="apellidos"
+                            class="form-control form-control-lg" placeholder="Introduzca los apellidos del socio">
+                            <div class="text-danger" *ngIf="socioForm?.get('apellidos')?.hasError('required') && socioForm.get('apellidos')?.touched">
+                                <span>Los apellidos del socio <strong>son obligatorios</strong></span>
+                            </div> 
+                        </div>
+                        <div class="mt-5">
+                            <button routerLink="/listar-socio" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="socioForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
